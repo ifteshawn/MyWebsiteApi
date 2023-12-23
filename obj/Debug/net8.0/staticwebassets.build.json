@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Kkm2UONja4wbGZJpBm6oIC+h//K6YBc0OKLHNm+9o0E=",
+  "Source": "MyWebsiteApi",
+  "BasePath": "_content/MyWebsiteApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
