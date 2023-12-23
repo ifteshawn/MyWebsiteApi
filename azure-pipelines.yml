@@ -17,6 +17,13 @@ variables:
 steps:
 - task: NuGetToolInstaller@1
 
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactstagingdirectory)/Templates'
+  inputs:
+    SourceFolder: deployment
+    Contents: '*.json'
+    TargetFolder: '$(build.artifactstagingdirectory)/Templates'
+
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
@@ -32,3 +39,6 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
