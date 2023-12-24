@@ -14,7 +14,7 @@
     "resources": [
         {
             "type": "Microsoft.DocumentDB/databaseAccounts",
-            "apiVersion": "2021-06-15",
+            "apiVersion": "2023-04-15",
             "name": "[parameters('databaseAccounts_website_ifte_cosmosdb_name')]",
             "location": "Australia East",
             "tags": {
@@ -77,7 +77,7 @@
         },
         {
             "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2021-09-01",
+            "apiVersion": "2022-09-01",
             "name": "[parameters('storageAccounts_websiteiftestorage_name')]",
             "location": "australiaeast",
             "sku": {
