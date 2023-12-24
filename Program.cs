@@ -19,7 +19,6 @@ builder.Services.AddSingleton<IProfileDataService>(options =>
 
     string PrimaryKey = builder.Configuration.GetSection("CosmosDBSettings")
     .GetValue<string>("PrimaryKey")!;
-
     string databaseName = builder.Configuration.GetSection("CosmosDBSettings")
     .GetValue<string>("DatabaseName")!;
     string containerName = builder.Configuration.GetSection("CosmosDBSettings")
@@ -31,15 +30,13 @@ builder.Services.AddSingleton<IProfileDataService>(options =>
 
 builder.Services.AddTransient<IMailDataService, MailDataService>();
 
-// builder.Services.Configure<MailData>(builder.Configuration.GetSection("MailData"));
 
-builder.Services.AddHttpClient();
+builder.Services.AddHttpClient<ResendClient>();
 
 builder.Services.Configure<ResendClientOptions>(o =>
 {
-    // var configuration = builder.Configuration.GetSection("ResendSettings");
-    // configuration.Bind(o.ApiToken);
-    o.ApiToken = builder.Configuration.GetSection("MailSettings").GetValue<string>("ResendApiToken")!;
+    o.ApiToken = builder.Configuration.GetSection("MailSettings")
+    .GetValue<string>("ResendApiToken")!;
 });
 
 builder.Services.AddTransient<IResend, ResendClient>();

@@ -16,8 +16,7 @@ namespace MyWebsiteApi.Services
             var message = new EmailMessage()
             {
                 From = "onboarding@resend.dev",
-                // To = mailData.SenderEmail ?? throw new ArgumentNullException(nameof(mailData.SenderEmail)),
-                To = "ifteshawn@gmail.com",
+                To = mailData.SenderEmail ?? throw new ArgumentNullException(nameof(mailData.SenderEmail)),
                 // message.Subject = "Hello!";
                 Subject = mailData.Subject ?? throw new ArgumentNullException(nameof(mailData.Subject)),
                 // message.HtmlBody = "<div><strong>Greetings<strong> 👋🏻 from .NET</div>";

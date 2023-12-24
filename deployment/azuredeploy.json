@@ -1,0 +1,121 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccounts_websiteiftestorage_name": {
+            "defaultValue": "websiteiftestorage",
+            "type": "string"
+        },
+        "databaseAccounts_website_ifte_cosmosdb_name": {
+            "defaultValue": "website-ifte-cosmosdb",
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts",
+            "apiVersion": "2021-01-15",
+            "name": "[parameters('databaseAccounts_website_ifte_cosmosdb_name')]",
+            "location": "Australia East",
+            "tags": {
+                "defaultExperience": "Core (SQL)",
+                "hidden-cosmos-mmspecial": ""
+            },
+            "kind": "GlobalDocumentDB",
+            "identity": {
+                "type": "None"
+            },
+            "properties": {
+                "publicNetworkAccess": "Enabled",
+                "enableAutomaticFailover": false,
+                "enableMultipleWriteLocations": false,
+                "isVirtualNetworkFilterEnabled": false,
+                "virtualNetworkRules": [],
+                "disableKeyBasedMetadataWriteAccess": false,
+                "enableFreeTier": true,
+                "enableAnalyticalStorage": false,
+                "analyticalStorageConfiguration": {
+                    "schemaType": "WellDefined"
+                },
+                "databaseAccountOfferType": "Standard",
+                "defaultIdentity": "FirstPartyIdentity",
+                "networkAclBypass": "None",
+                "disableLocalAuth": false,
+                "enablePartitionMerge": false,
+                "enableBurstCapacity": false,
+                "minimalTlsVersion": "Tls12",
+                "consistencyPolicy": {
+                    "defaultConsistencyLevel": "Session",
+                    "maxIntervalInSeconds": 5,
+                    "maxStalenessPrefix": 100
+                },
+                "locations": [
+                    {
+                        "locationName": "Australia East",
+                        "provisioningState": "Succeeded",
+                        "failoverPriority": 0,
+                        "isZoneRedundant": false
+                    }
+                ],
+                "cors": [],
+                "capabilities": [],
+                "ipRules": [],
+                "backupPolicy": {
+                    "type": "Periodic",
+                    "periodicModeProperties": {
+                        "backupIntervalInMinutes": 240,
+                        "backupRetentionIntervalInHours": 8,
+                        "backupStorageRedundancy": "Geo"
+                    }
+                },
+                "networkAclBypassResourceIds": [],
+                "capacity": {
+                    "totalThroughputLimit": 1000
+                },
+                "keysMetadata": {}
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2021-09-01",
+            "name": "[parameters('storageAccounts_websiteiftestorage_name')]",
+            "location": "australiaeast",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "StorageV2",
+            "properties": {
+                "dnsEndpointType": "Standard",
+                "defaultToOAuthAuthentication": false,
+                "publicNetworkAccess": "Enabled",
+                "allowCrossTenantReplication": false,
+                "minimumTlsVersion": "TLS1_2",
+                "allowBlobPublicAccess": false,
+                "allowSharedKeyAccess": true,
+                "networkAcls": {
+                    "bypass": "AzureServices",
+                    "virtualNetworkRules": [],
+                    "ipRules": [],
+                    "defaultAction": "Allow"
+                },
+                "supportsHttpsTrafficOnly": true,
+                "encryption": {
+                    "requireInfrastructureEncryption": false,
+                    "services": {
+                        "file": {
+                            "keyType": "Account",
+                            "enabled": true
+                        },
+                        "blob": {
+                            "keyType": "Account",
+                            "enabled": true
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                },
+                "accessTier": "Hot"
+            }
+        }
+    ]
+}
