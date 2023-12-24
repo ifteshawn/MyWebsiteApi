@@ -14,7 +14,7 @@
     "resources": [
         {
             "type": "Microsoft.DocumentDB/databaseAccounts",
-            "apiVersion": "2021-05-15",
+            "apiVersion": "2021-06-15",
             "name": "[parameters('databaseAccounts_website_ifte_cosmosdb_name')]",
             "location": "Australia East",
             "tags": {
