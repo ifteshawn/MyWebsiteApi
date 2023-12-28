@@ -62,3 +62,6 @@
 /Users/ifteshawn/My repo/MyWebApi/MyWebsiteApi/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll
 /Users/ifteshawn/My repo/MyWebApi/MyWebsiteApi/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll
 /Users/ifteshawn/My repo/MyWebApi/MyWebsiteApi/bin/Debug/net8.0/Resend.dll
+/Users/ifteshawn/My repo/MyWebApi/MyWebsiteApi/bin/Debug/net8.0/deployment/azuredeploy.json
+/Users/ifteshawn/My repo/MyWebApi/MyWebsiteApi/bin/Debug/net8.0/deployment/azuredeploy.parameters.json
+/Users/ifteshawn/My repo/MyWebApi/MyWebsiteApi/obj/Debug/net8.0/MyWebsiteApi.sourcelink.json
