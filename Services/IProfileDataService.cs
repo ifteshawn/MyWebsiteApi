@@ -1,3 +1,5 @@
+using MyWebsiteApi.Models;
+
 namespace MyWebsiteApi.Services
 {
     public interface IProfileDataService

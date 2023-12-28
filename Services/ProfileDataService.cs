@@ -1,4 +1,5 @@
 using Microsoft.Azure.Cosmos;
+using MyWebsiteApi.Models;
 
 namespace MyWebsiteApi.Services
 {

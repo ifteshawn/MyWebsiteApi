@@ -16,7 +16,7 @@ namespace MyWebsiteApi.Controller
         }
 
         // GET: api/ProfileData
-        [HttpGet("[action]/{profileId:length(1,50)}")]
+        [HttpGet("{profileId:length(1,50)}")]
         public async Task<IActionResult> GetProfileData(string profileId)
         {
             try

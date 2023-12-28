@@ -14,41 +14,29 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<IProfileDataService>(options =>
 {
-    string URL = builder.Configuration.GetSection("CosmosDBSettings")
-    .GetValue<string>("URL")!;
-
-    string PrimaryKey = builder.Configuration.GetSection("CosmosDBSettings")
-    .GetValue<string>("PrimaryKey")!;
-    string databaseName = builder.Configuration.GetSection("CosmosDBSettings")
-    .GetValue<string>("DatabaseName")!;
-    string containerName = builder.Configuration.GetSection("CosmosDBSettings")
-    .GetValue<string>("ContainerName")!;
-    var cosmosClient = new CosmosClient(URL, PrimaryKey);
-
+    string cosmosConnection = builder.Configuration["ConnectionStrings:Ifte:CosmosDbConnectionString"]!;
+    string databaseName = builder.Configuration["CosmosDbSettings:DatabaseName"]!;
+    string containerName = builder.Configuration["CosmosDbSettings:ContainerName"]!;
+    var cosmosClient = new CosmosClient(cosmosConnection);
     return new ProfileDataService(cosmosClient, databaseName, containerName);
 });
 
 builder.Services.AddTransient<IMailDataService, MailDataService>();
-
-
 builder.Services.AddHttpClient<ResendClient>();
-
 builder.Services.Configure<ResendClientOptions>(o =>
 {
-    o.ApiToken = builder.Configuration.GetSection("MailSettings")
-    .GetValue<string>("ResendApiToken")!;
+    o.ApiToken = builder.Configuration["ApiKeys:Resend:ResendApiToken"]!;
 });
-
 builder.Services.AddTransient<IResend, ResendClient>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// if (app.Environment.IsDevelopment())
+// {
+app.UseSwagger();
+app.UseSwaggerUI();
+// }
 
 app.UseHttpsRedirection(  );
 

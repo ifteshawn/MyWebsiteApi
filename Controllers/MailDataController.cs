@@ -14,8 +14,6 @@ namespace MyWebsiteApi.Controllers
             _mailDataService = mailDataService;
         }
 
-        // [HttpGet("[action]/{city:length(1,50)}/{country:length(2)}")]
-
         //POST: api/MailData
         [HttpPost]
         public async Task<IActionResult> SendEmail(MailData mailData)
