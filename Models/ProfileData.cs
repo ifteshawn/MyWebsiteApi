@@ -1,6 +1,4 @@
-using System.Net;
 using System.Text.Json.Serialization;
-using Newtonsoft.Json;
 
 namespace MyWebsiteApi.Models
 {
@@ -12,6 +10,8 @@ namespace MyWebsiteApi.Models
         public List<Project>? Projects { get; set; }
         [JsonPropertyName("credentials")]
         public List<Credential>? Credentials { get; set; }
+        [JsonPropertyName("skills")]
+        public List<Skill>? Skills { get; set; }
     }
 
     public class Credential
