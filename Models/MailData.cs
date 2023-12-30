@@ -5,8 +5,6 @@ namespace MyWebsiteApi.Models
 {
     public class MailData
     {
-        [JsonPropertyName("receiverEmail")]
-        public string? ReceiverEmail { get; set; }
         [JsonPropertyName("senderName")]
         public string? SenderName { get; set; }
         [JsonPropertyName("senderEmail")]

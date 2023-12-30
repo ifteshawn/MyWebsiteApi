@@ -25,7 +25,7 @@ namespace MyWebsiteApi.Controllers
             }
             catch (Exception)
             {
-                return NotFound();
+                return StatusCode(500, "An error occurred while sending email.");
             }
         }
     }

@@ -19,6 +19,13 @@ namespace MyWebsiteApi.Controller
         [HttpGet("{profileId:length(1,50)}")]
         public async Task<IActionResult> GetProfileData(string profileId)
         {
+            if(string.IsNullOrWhiteSpace(profileId))
+            {
+                return BadRequest("ProfileId is required");
+            }
+
+            profileId = profileId.ToUpper();
+
             try
             {
                 var profileData = await _profileDataService.GetProfileDataAsync(profileId);
