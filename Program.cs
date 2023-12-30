@@ -26,7 +26,7 @@ builder.Services.AddTransient<IMailDataService, MailDataService>();
 builder.Services.AddHttpClient<ResendClient>();
 builder.Services.Configure<ResendClientOptions>(o =>
 {
-    o.ApiToken = builder.Configuration["ApiKeys:Resend:ResendApiToken"]!;
+    o.ApiToken = builder.Configuration["Resend:ResendApiToken"]!;
 });
 builder.Services.AddTransient<IResend, ResendClient>();
 
